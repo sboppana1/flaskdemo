@@ -8,7 +8,7 @@ pipeline {
         GIT_BRANCH="master"
         STAGE_TAG = "promoteToQA"
         DEV_PROJECT = "shanthi-dev"
-        STAGE_PROJECT = "stage"
+        STAGE_PROJECT = "shanthi-stage"
         TEMPLATE_NAME = "flaskdemo"
         ARTIFACT_FOLDER = "target"
         PORT = 8081;
