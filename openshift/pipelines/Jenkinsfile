@@ -3,13 +3,13 @@ pipeline {
         node {label 'python'}
     }
     environment {
-        APPLICATION_NAME = 'python-nginx'
+        APPLICATION_NAME = 'flaskdemo'
         GIT_REPO="https://github.com/sboppana1/flaskdemo.git"
         GIT_BRANCH="master"
         STAGE_TAG = "promoteToQA"
         DEV_PROJECT = "dev"
         STAGE_PROJECT = "stage"
-        TEMPLATE_NAME = "python-nginx"
+        TEMPLATE_NAME = "flaskdemo"
         ARTIFACT_FOLDER = "target"
         PORT = 8081;
     }
