@@ -1,0 +1,23 @@
+cd oc-4.7.16-macosx
+./oc
+chmod +x oc
+ ./oc login --token=sha256~6lgiUCkz1MiS9YVfRvGD-6TWpXN4zC_qQS0BSGL30AU --server=https://c109-e.us-east.containers.cloud.ibm.com:31866
+ ./oc new-project shanthi_dev --token=sha256~6lgiUCkz1MiS9YVfRvGD-6TWpXN4zC_qQS0BSGL30AU --server=https://c109-e.us-east.containers.cloud.ibm.com:31866
+ ./oc new-project shanthi-dev --token=sha256~6lgiUCkz1MiS9YVfRvGD-6TWpXN4zC_qQS0BSGL30AU --server=https://c109-e.us-east.containers.cloud.ibm.com:31866
+ ./oc new-project shanthi-stage --token=sha256~6lgiUCkz1MiS9YVfRvGD-6TWpXN4zC_qQS0BSGL30AU --server=https://c109-e.us-east.containers.cloud.ibm.com:31866
+ ./oc new-project shanthi-cicd --token=sha256~6lgiUCkz1MiS9YVfRvGD-6TWpXN4zC_qQS0BSGL30AU --server=https://c109-e.us-east.containers.cloud.ibm.com:31866
+ ./oc project shanthi-cicd --token=sha256~6lgiUCkz1MiS9YVfRvGD-6TWpXN4zC_qQS0BSGL30AU --server=https://c109-e.us-east.containers.cloud.ibm.com:31866
+ ./oc new-app jenkins-persistent
+  779  ./oc expose svc/jenkins-persistent
+  780  ./oc expose svc/jenkins-persistent
+  781  ./oc expose svc/jenkins
+oc policy add-role-to-user edit system:serviceaccount:shanthi_cicd:jenkins -n shanthi_dev
+./oc policy add-role-to-user edit system:serviceaccount:shanthi_cicd:jenkins -n shanthi_dev
+./oc policy add-role-to-user edit system:serviceaccount:shanthi-cicd:jenkins -n shanthi-dev
+./oc policy add-role-to-user edit system:serviceaccount:shanthi-cicd:jenkins -n shanthi-stage
+
+./oc create -f https://raw.githubusercontent.com/idealo/jenkins-ci/master/config-map.yaml
+
+~/Downloads/oc-4.7.16-macosx/oc project shanthi-cicd
+~/Downloads/oc-4.7.16-macosx/oc create -f jenkins-pipeline.yaml
+~/Downloads/oc-4.7.16-macosx/oc start-build flaskdemo

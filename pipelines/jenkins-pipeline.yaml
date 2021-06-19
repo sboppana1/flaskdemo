@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+    labels:
+        app: flaskdemo
+    name: flaskdemo
+spec:
+    source:
+        git:
+            ref: master
+            uri: https://github.com/sboppana1/flaskdemo.git
+    strategy:
+        jenkinsPipelineStrategy:
+            jenkinsfilePath: openshift/pipelines/Jenkinsfile
+        type: JenkinsPipeline
+    triggers:
+        - github:
+            secret: secret
+          type: GitHub
+        - generic:
+            secret: secret
+          type: Generic
+        - bitbucket:
+            secret: secret
+          type: Bitbucket
