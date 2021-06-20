@@ -21,3 +21,5 @@ oc policy add-role-to-user edit system:serviceaccount:shanthi_cicd:jenkins -n sh
 ~/Downloads/oc-4.7.16-macosx/oc project shanthi-cicd
 ~/Downloads/oc-4.7.16-macosx/oc create -f jenkins-pipeline.yaml
 ~/Downloads/oc-4.7.16-macosx/oc start-build flaskdemo
+~/Downloads/oc-4.7.16-macosx/oc get bc
+
